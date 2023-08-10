@@ -1,0 +1,72 @@
+<mat-card class="parent-card">
+    <div class="top">
+        <mat-card-title>
+            Taskboard
+        </mat-card-title>
+        <button mat-raised-button color="primary" (click)="openDialog()">Add Task</button>
+    </div>
+    <div class="bottom">
+        <div class="cards-columns">
+            <div class="column">
+                <mat-card class="bg-blue">
+                    <h3>Todo</h3>
+                </mat-card>
+                <div class="column-array" *ngFor="let cardTodo of todo?.todo">
+                    <mat-card>
+                        <h2>
+                            Task : {{cardTodo.task}}.
+                        </h2>
+                        <h3>
+                            Description : {{cardTodo.desc}}.
+                        </h3>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="column">
+                <mat-card class="bg-yellow">
+                    <h3>Inprogress</h3>
+                </mat-card>
+                <div class="column-array" *ngFor="let cardInprogress of inProgress?.inProgress">
+                    <mat-card>
+                        <h2>
+                            Task : {{cardInprogress.task}}.
+                        </h2>
+                        <h3>
+                            Description : {{cardInprogress.desc}}.
+                        </h3>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="column">
+                <mat-card class="bg-pink">
+                    <h3>Onhold</h3>
+                </mat-card>
+                <div class="column-array" *ngFor="let cardOnhold of onHold?.onHold">
+                    <mat-card>
+                        <h2>
+                            Task : {{cardOnhold.task}}.
+                        </h2>
+                        <h3>
+                            Description : {{cardOnhold.desc}}.
+                        </h3>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="column">
+                <mat-card class="bg-aqua">
+                    <h3>Completed</h3>
+                </mat-card>
+                <div class="column-array" *ngFor="let cardCompleted of completed?.completed">
+                    <mat-card>
+                        <h2>
+                            Task : {{cardCompleted.task}}.
+                        </h2>
+                        <h3>
+                            Description : {{cardCompleted.desc}}.
+                        </h3>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>

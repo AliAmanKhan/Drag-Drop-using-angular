@@ -1,0 +1,35 @@
+.top-parent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80rem;
+    margin-top: 1rem;
+    align-items: center;
+    background-color: transparent;
+}
+.title{
+    margin-left: 1rem;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.blue{
+    color: blue;
+}
+.aqua{
+    color: aqua;
+}
+.middle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 1rem;
+}
+.middle p{
+    margin-bottom: -0.1rem;
+}
+.middle h4{
+    font-size: 1.4rem;
+}

@@ -1,0 +1,26 @@
+<form id="dataForm" [formGroup]="taskForm" (ngSubmit)="onFormSubmit()">
+<h1 mat-dialog-title>Add the information about your task</h1>
+<div mat-dialog-content>
+    <mat-form-field class="example-full-width input">
+        <mat-label>Task Title</mat-label>
+        <input matInput placeholder="Ex. Learn Github" id="input-title" formControlName="task" name="title">
+    </mat-form-field>
+    <mat-form-field class="input">
+        <mat-label>Select Status</mat-label>
+        <mat-select formControlName="status" placeholder="Select the statu..." name="status" required>
+            <mat-option id="input-status" *ngFor="let status of statuses" [value]="status.value">
+                {{status.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width textarea">
+        <mat-label>Task Description</mat-label>
+        <textarea id="input-desc" matInput placeholder="Ex. In this task you have to..." formControlName="desc" name="desc"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close>Close</button>
+    <button mat-raised-button type="reset">Clear</button>
+    <button mat-raised-button type="submit">Submit</button>
+</div>
+</form>
