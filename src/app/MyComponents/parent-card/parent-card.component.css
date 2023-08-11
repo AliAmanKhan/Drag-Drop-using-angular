@@ -47,7 +47,7 @@ mat-card-title{
     background-color: rgba(255, 255, 0, 0.6);
 }
 .bg-pink{
-    background-color: rgb(220, 20, 60, 0.6);
+    background-color: rgba(220, 20, 60, 0.6);
     
 }
 .bg-aqua{
@@ -73,22 +73,22 @@ mat-card-title{
     background-color: rgb(255, 255, 0, 0.3);
 }
 .card-pink{
-    background-color: rgb(255, 192, 203, 0.3);
+    background-color: rgba(220, 20, 60, 0.3);
 }
 .card-aqua{
     background-color: rgb(0, 255, 255, 0.3);
 }
 .card-blue:hover{
-    background-color: rgb(0, 0, 255, 0.1);
+    background-color: rgb(0, 0, 255, 0.2);
 }
 .card-yellow:hover{
-    background-color: rgb(255, 255, 0, 0.1);
+    background-color: rgb(255, 255, 0, 0.2);
 }
 .card-pink:hover{
-    background-color: rgb(255, 192, 203, 0.2);
+    background-color: rgba(220, 20, 60, 0.2);
 }
 .card-aqua:hover{
-    background-color: rgb(0, 255, 255, 0.1);
+    background-color: rgb(0, 255, 255, 0.2);
 }
 .card-detail h4, .card-detail h5{
     margin: 0;
