@@ -10,14 +10,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DialogComponent implements OnInit {
   taskForm!: FormGroup;
   statuses = [
-    {value: 'Todo', viewValue: 'Todo'},
-    {value: 'Inprogress', viewValue: 'Inprogress'},
-    {value: 'Onhold', viewValue: 'Onhold'},
-    {value: 'Completed', viewValue: 'Completed'},
+    { value: 'Todo', viewValue: 'Todo' },
+    { value: 'Inprogress', viewValue: 'Inprogress' },
+    { value: 'Onhold', viewValue: 'Onhold' },
+    { value: 'Completed', viewValue: 'Completed' },
   ];
-  constructor (private frm: FormBuilder, public dialogRef: MatDialogRef<any>){}
+  constructor(private frm: FormBuilder, public dialogRef: MatDialogRef<any>) { }
+  
 
-  ngOnInit(){
+  ngOnInit() {
     this.taskForm = this.frm.group({
       task: '',
       desc: '',
@@ -25,26 +26,48 @@ export class DialogComponent implements OnInit {
     })
   }
 
+  // public onFormSubmit(){
+  //   if(this.taskForm.valid){
+  //     console.log(this.taskForm.value);
+  //     let formValue = this.taskForm.value;
+  //     if(formValue.status==="Todo"){
+  //       localStorage.setItem('dataTodo', JSON.stringify(formValue)); 
+  //     }
+  //     if(formValue.status==="Inprogress"){
+  //       localStorage.setItem('dataInprogress', JSON.stringify(formValue)); 
+  //     }
+  //     if(formValue.status==="Onhold"){
+  //       localStorage.setItem('dataOnhold', JSON.stringify(formValue)); 
+  //     }
+  //     if(formValue.status==="Completed"){
+  //       localStorage.setItem('dataCompleted', JSON.stringify(formValue));
+  //     }
+  //   }
+  //   this.dialogRef.close(this.taskForm.value);
+  // }
+
   // Function to set the data in localStorage on form submission
-  public onFormSubmit(){
-    if(this.taskForm.valid){
-      console.log(this.taskForm.value);
-      let formValue = this.taskForm.value;
-      if(formValue.status==="Todo"){
-        localStorage.setItem('dataTodo', JSON.stringify(formValue)); 
-      }
-      if(formValue.status==="Inprogress"){
-        localStorage.setItem('dataInprogress', JSON.stringify(formValue)); 
-      }
-      if(formValue.status==="Onhold"){
-        localStorage.setItem('dataOnhold', JSON.stringify(formValue)); 
-      }
-      if(formValue.status==="Completed"){
-        localStorage.setItem('dataCompleted', JSON.stringify(formValue));
-      }
-    }
-    this.dialogRef.close(this.taskForm.value);
+  public onFormSubmit() {
+    // if (this.taskForm.valid) {
+    //   const formValue = this.taskForm.value;
+    //   const status = formValue.status;
+
+    //   let storedData = localStorage.getItem(`data${status}`);
+    //   let tasksArray = [];
+
+    //   if (storedData) {
+    //     tasksArray = JSON.parse(storedData);
+    //   }
+
+    //   tasksArray.push(formValue);
+
+    //   localStorage.setItem(`data${status}`, JSON.stringify(tasksArray));
+    //   this.dialogRef.close(this.taskForm.value);
+    // }
+    
   }
 
-
+  onSubmit(){
+    this.dialogRef.close(this.taskForm.value);
+  }
 }

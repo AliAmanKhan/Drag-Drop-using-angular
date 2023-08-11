@@ -8,7 +8,7 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: rgba(175, 238, 238, 0.212);
+    background-color: rgba(175, 238, 238, 0.4);
     width: 100%;
     display: flex;
     justify-content: center;

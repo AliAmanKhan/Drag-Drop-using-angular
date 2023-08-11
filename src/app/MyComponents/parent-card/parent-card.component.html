@@ -6,64 +6,76 @@
         <button mat-raised-button color="primary" (click)="openDialog()">Add Task</button>
     </div>
     <div class="bottom">
-        <div class="cards-columns">
-            <div class="column">
-                <mat-card class="bg-blue">
+        <div class="cards-columns" cdkDropListGroup>
+            <div class="column" cdkDropList [cdkDropListData]="todoData" (cdkDropListDropped)="drop($event)">
+                <mat-card class="status-name bg-blue">
                     <h3>Todo</h3>
                 </mat-card>
-                <div class="column-array" *ngFor="let cardTodo of todo?.todo">
-                    <mat-card>
-                        <h2>
-                            Task : {{cardTodo.task}}.
-                        </h2>
-                        <h3>
-                            Description : {{cardTodo.desc}}.
-                        </h3>
+                <div class="column-array" *ngFor="let cardTodo of todoData" cdkDrag>
+                    <mat-card class="card-detail card-blue">
+                        <h4>
+                            <b>{{cardTodo.task}}</b>
+                        </h4>
+                        <h5>
+                            {{cardTodo.desc}}
+                        </h5>
+                        <button mat-button color="basic" (click)="deleteTodo(cardTodo.task)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
                     </mat-card>
                 </div>
             </div>
-            <div class="column">
-                <mat-card class="bg-yellow">
+            <div class="column" cdkDropList [cdkDropListData]="inprogressData" (cdkDropListDropped)="drop($event)">
+                <mat-card class="status-name bg-yellow">
                     <h3>Inprogress</h3>
                 </mat-card>
-                <div class="column-array" *ngFor="let cardInprogress of inProgress?.inProgress">
-                    <mat-card>
-                        <h2>
-                            Task : {{cardInprogress.task}}.
-                        </h2>
-                        <h3>
-                            Description : {{cardInprogress.desc}}.
-                        </h3>
+                <div class="column-array" *ngFor="let cardInprogress of inprogressData" cdkDrag>
+                    <mat-card class="card-detail card-yellow">
+                        <h4>
+                            <b>{{cardInprogress.task}}</b>
+                        </h4>
+                        <h5>
+                            {{cardInprogress.desc}}
+                        </h5>
+                        <button mat-button color="basic" (click)="deleteInprogress(cardInprogress.task)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
                     </mat-card>
                 </div>
             </div>
-            <div class="column">
-                <mat-card class="bg-pink">
+            <div class="column" cdkDropList [cdkDropListData]="onHoldData" (cdkDropListDropped)="drop($event)">
+                <mat-card class="status-name bg-pink">
                     <h3>Onhold</h3>
                 </mat-card>
-                <div class="column-array" *ngFor="let cardOnhold of onHold?.onHold">
-                    <mat-card>
-                        <h2>
-                            Task : {{cardOnhold.task}}.
-                        </h2>
-                        <h3>
-                            Description : {{cardOnhold.desc}}.
-                        </h3>
+                <div class="column-array" *ngFor="let cardOnhold of onHoldData" cdkDrag>
+                    <mat-card class="card-detail card-pink">
+                        <h4>
+                            <b>{{cardOnhold.task}}</b>
+                        </h4>
+                        <h5>
+                            {{cardOnhold.desc}}
+                        </h5>
+                        <button mat-button color="basic" (click)="deleteOnhold(cardOnhold.task)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
                     </mat-card>
                 </div>
             </div>
-            <div class="column">
-                <mat-card class="bg-aqua">
+            <div class="column" cdkDropList [cdkDropListData]="completedData" (cdkDropListDropped)="drop($event)">
+                <mat-card class="status-name bg-aqua">
                     <h3>Completed</h3>
                 </mat-card>
-                <div class="column-array" *ngFor="let cardCompleted of completed?.completed">
-                    <mat-card>
-                        <h2>
-                            Task : {{cardCompleted.task}}.
-                        </h2>
-                        <h3>
-                            Description : {{cardCompleted.desc}}.
-                        </h3>
+                <div class="column-array" *ngFor="let cardCompleted of completedData" cdkDrag>
+                    <mat-card class="card-detail card-aqua">
+                        <h4>
+                            <b>{{cardCompleted.task}}</b>
+                        </h4>
+                        <h5>
+                            {{cardCompleted.desc}}
+                        </h5>
+                        <button mat-button color="basic" (click)="deleteCompleted(cardCompleted.task)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
                     </mat-card>
                 </div>
             </div>

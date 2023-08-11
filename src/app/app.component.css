@@ -1,8 +1,19 @@
+/* .app-component{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+} */
+
+body{
+    width: 100%;
+    justify-content: center;
+}
 .top-parent{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 80rem;
+    width: 70rem;
     margin-top: 1rem;
     align-items: center;
     background-color: transparent;
