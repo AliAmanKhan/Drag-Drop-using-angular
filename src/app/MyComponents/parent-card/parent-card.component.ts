@@ -1,6 +1,5 @@
-import { Component, Input, OnInit  } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { DialogComponent } from '../dialog/dialog.component';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
@@ -10,22 +9,13 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./parent-card.component.css']
 })
 export class ParentCardComponent implements OnInit {
-
-  @Input() tasksArray: any[] = [];
-  // @Input() inprogressData: any[] = [];
-  // @Input() onHoldData: any[] = [];
-  // @Input() completedData: any[] = [];
-
   
   todoData: any[] = [];
   inprogressData: any[] = [];
   onHoldData: any[] = [];
   completedData: any[] = [];  
 
-  constructor(public dialog: MatDialog){
-    // this.loadData();
-
-  }
+  constructor(public dialog: MatDialog){  }
 
   ngOnInit(): void {
     const storedTodo = localStorage.getItem('dataTodo');
@@ -57,10 +47,10 @@ export class ParentCardComponent implements OnInit {
       
     localStorage.setItem('dataCompleted', JSON.stringify(this.completedData));
     }
-    // this.saveToLocalStorage();
-    
+  
   }
 
+  //Function to open the dialog on click
   openDialog(){
     const dialogRef = this.dialog.open(DialogComponent, {
     });
@@ -68,10 +58,6 @@ export class ParentCardComponent implements OnInit {
       if(result.status === 'Todo'){
         this.todoData = [...this.todoData,result]
       }
-      // this.dataSource = [...this.dataSource,result]
-      // localStorage.setItem('formData', JSON.stringify([...this.dataSource]));
-      // this.filterValues(this.dataSource);
-      // this.dataLet = [...this.dataSource];
       if(result.status === 'Inprogress'){
         this.inprogressData = [...this.inprogressData,result]
       }
@@ -84,29 +70,40 @@ export class ParentCardComponent implements OnInit {
       this.saveToLocalStorage();
     });
   }
+
+  //Function to save the data in the localStorage
   saveToLocalStorage(){
     localStorage.setItem('dataTodo', JSON.stringify(this.todoData));
     localStorage.setItem('dataInprogress', JSON.stringify(this.inprogressData));
     localStorage.setItem('dataOnhold', JSON.stringify(this.onHoldData));
     localStorage.setItem('dataCompleted', JSON.stringify(this.completedData));
   }
+
+  //Function to delete the card with todoData data
   deleteTodo(task: string) {
     this.todoData = this.todoData.filter((item) => item.task !== task);
     this.saveToLocalStorage();
   }
+
+  //Function to delete the card with inprogressData data
   deleteInprogress(task: string) {
     this.inprogressData = this.inprogressData.filter((item) => item.task !== task);
     this.saveToLocalStorage();
   }
+
+  //Function to delete the card with onHoldData data
   deleteOnhold(task: string) {
     this.onHoldData = this.onHoldData.filter((item) => item.task !== task);
     this.saveToLocalStorage();
   }
+
+  //Function to delete the card with completedData data
   deleteCompleted(task: string) {
     this.completedData = this.completedData.filter((item) => item.task !== task);
     this.saveToLocalStorage();
   }
   
+  //Function to perform the Drag and Drop operations on the cards
   drop(event: CdkDragDrop<string[]>){
     if(event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
